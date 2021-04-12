@@ -1,0 +1,107 @@
+<form class="row g-3 needs-validation" [formGroup]="registerForm" (ngSubmit)="register()" novalidate>   
+    
+        <div class="col-md-6">
+          <label for="regName" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="regName" id="regName"
+           [ngClass]="{'is-invalid': submitted && registerForm.controls.regName.errors 
+          || registerForm.controls.regName.touched && registerForm.controls.regName.invalid}"  required/>
+          
+          <div *ngIf="submitted && registerForm.controls.regName.errors 
+          || registerForm.controls.regName.touched && registerForm.controls.regName.invalid" class="invalid-feedback">
+              Please enter your name          
+          </div>
+
+        </div>
+        
+        <div class="col-md-6">
+          <label for="regUserName" class="form-label">User Name</label>
+          <input type="text" class="form-control" formControlName="regUserName" id="regUserName" 
+          [ngClass]="{'is-invalid': submitted && registerForm.controls.regUserName.errors}"  required/>
+          
+          <div *ngIf="submitted && registerForm.controls.regUserName.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.controls.regUserName.errors.required">
+              Please enter User Name          
+          </div>         
+          </div>
+       
+        </div>
+        <div class="col-md-6">
+            <label for="regPwd" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="regPwd" id="regPwd" 
+            [ngClass]="{'is-invalid': submitted && registerForm.controls.regPwd.errors}"  required/>
+          
+            <div *ngIf="submitted && registerForm.controls.regPwd.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.controls.regPwd.errors.required">
+                Please enter Password          
+            </div>       
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="regConfirmPwd" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="regConfirmPwd" id="regConfirmPwd" 
+            [ngClass]="{'is-invalid': submitted && registerForm.controls.regConfirmPwd.errors ||
+             registerForm.controls.regConfirmPwd.touched && registerForm.controls.regConfirmPwd.errors.mustMatch}"  required/>
+          
+            
+            <div *ngIf="submitted && registerForm.controls.regConfirmPwd.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.controls.regConfirmPwd.errors.required">
+                Please Confirm the password         
+              </div>             
+             </div>
+             <div *ngIf="registerForm.controls.regConfirmPwd.touched && registerForm.controls.regConfirmPwd.errors.mustMatch" class="invalid-feedback" >
+              Passwords must match
+            </div>       
+            
+            
+          </div>
+          <div class="col-md-6">
+            <label for="regEmail" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="regEmail" id="regEmail" required
+            [ngClass]="{'is-invalid': submitted && registerForm.controls.regEmail.errors}"  required/>
+          
+            <div *ngIf="submitted && registerForm.controls.regEmail.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.controls.regEmail.errors.required">
+                Please enter the Email     
+              </div>       
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="regContactNum" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" formControlName="regContactNum" id="regContactNum" required
+            [ngClass]="{'is-invalid': submitted && registerForm.controls.regContactNum.errors}"  required/>
+          
+            <div *ngIf="submitted && registerForm.controls.regContactNum.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.controls.regContactNum.errors.required">
+                Please enter your contact Number     
+              </div>       
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <label for="regBankName" class="form-label">Bank Name</label>
+            <input type="text" class="form-control" formControlName="regBankName" id="regBankName">
+          </div>
+          <div class="col-md-6">
+            <label for="regBankAddress" class="form-label">Bank Address</label>
+            <input type="text" class="form-control" formControlName="regBankAddress" id="regBankAddress">
+          </div>
+        
+
+
+
+
+        <div class="col-12">
+            <!-- <button [disabled]="loading" class="btn btn-primary">
+               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Register
+            </button>-->
+          <button type="submit" class="btn btn-primary" >Register</button>
+        </div>
+      
+</form>
+<div *ngIf="msg" class="alert alert-success" role="alert" >
+  {{message}}
+</div>
+<!--<div class="alert alert-danger" role="alert">
+  This is a danger alert—check it out!
+</div> -->
